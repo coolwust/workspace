@@ -14,6 +14,7 @@ WORKDIR /root
 
 COPY vimrc .vimrc
 COPY tmux.conf .tmux.conf
+COPY gitignore .config/git/ignore
 
 # Install dropbox
 RUN curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf - \
