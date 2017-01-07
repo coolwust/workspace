@@ -18,7 +18,6 @@ dnf -y update && dnf -y install \
   docker \
   passwd
 
-
 GO_VERSION=1.7.4
 NODE_VERSION=v7.3.0
 PATH=$PATH:/opt/node/bin
