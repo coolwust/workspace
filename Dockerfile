@@ -4,11 +4,15 @@ FROM fedora:25
 RUN dnf -y update && dnf -y install \
 	curl \
 	tar \
-	docker \
+	less \
+	man \
+	ps \
 	vim \
 	tmux \
+	ranger \
 	git \
-	gcc
+	gcc \
+	docker
 
 WORKDIR /root
 
@@ -19,13 +23,12 @@ COPY gitignore .config/git/ignore
 # Install dropbox
 RUN curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf - \
        	&& mv .dropbox-dist /opt/dropbox
-COPY dropbox.service .config/systemd/user
 
 # Install Go
 ENV GO_VERSION 1.7.4
 RUN curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz" | tar -C /opt -xzf - \
-	&& mkdir -p Documents/go \
-	&& git clone "https://github.com/fatih/vim-go.git" .vim/pack/plugins/start/vim-go
+	&& mkdir -p ~/Documents/go \
+	&& git clone "https://github.com/fatih/vim-go.git" ~/.vim/pack/plugins/start/vim-go
 ENV PATH /opt/go/bin:$PATH
 ENV GOPATH ~/Documents/go
 
@@ -37,6 +40,6 @@ ENV PATH /opt/node/bin:$PATH
 
 # Install TypeScript
 RUN npm install -g typescript \
-	&& git clone "https://github.com/leafgarland/typescript-vim.git" .vim/pack/plugins/start/typescript-vim
+	&& git clone "https://github.com/leafgarland/typescript-vim.git" ~/.vim/pack/plugins/start/typescript-vim
 
-ENTRYPOINT /bin/bash
+ENTRYPOINT ["/bin/bash"]
