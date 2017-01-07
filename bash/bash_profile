@@ -12,4 +12,4 @@ PATH=$PATH:/opt/go/bin
 PATH=$PATH:$HOME/Documents/go/bin
 PATH=$PATH:/opt/node/bin
 export PATH
-export GOPATH $HOME/Documents/go
+export GOPATH=$HOME/Documents/go
