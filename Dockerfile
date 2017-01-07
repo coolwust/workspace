@@ -6,7 +6,7 @@ RUN dnf -y update && dnf -y install \
 	tar \
 	less \
 	man \
-	ps \
+	procps-ng \
 	vim \
 	tmux \
 	ranger \
