@@ -1,0 +1,12 @@
+[Unit]
+Description=Dropbox Daemon
+After=network.target
+
+[Service]
+ExecStart=/home/coldume/.dropbox-dist/dropboxd
+ExecReload=/bin/kill -SIGHUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
