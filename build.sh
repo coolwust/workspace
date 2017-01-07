@@ -1,5 +1,4 @@
 #!/bin/sh
-echo hehe
 
 [ "$#" -eq 1 ] || (echo "usage: ./build.sh <username>" 1>&2 && exit 1)
 
