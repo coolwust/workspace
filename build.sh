@@ -16,7 +16,8 @@ dnf -y update && dnf -y install \
   git \
   gcc \
   docker \
-  passwd
+  passwd \
+  python
 
 curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf -
 mv .dropbox-dist /opt/dropbox
