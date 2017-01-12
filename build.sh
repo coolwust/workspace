@@ -20,13 +20,15 @@ dnf -y update && dnf -y install \
 
 GO_VERSION=1.7.4
 NODE_VERSION=v7.3.0
+GCLOUD_VERSION=139.0.0
 PATH=$PATH:/opt/node/bin
 curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf -
 mv .dropbox-dist /opt/dropbox
-curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz" | tar -C /opt -xzf -
 curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -Jxf -
 mv node-${NODE_VERSION}-linux-x64 /opt/node
 npm install -g typescript
+curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz" | tar -C /opt -xzf -
+curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz" | tar -C /opt -xzf -
 
 USER_DIR=/home/"$1"
 useradd -m "$1"
