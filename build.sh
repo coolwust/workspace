@@ -39,6 +39,7 @@ useradd -m "$1"
 cp vim/vimrc $USER_DIR/.vimrc
 git clone "https://github.com/fatih/vim-go.git" $USER_DIR/.vim/pack/plugins/start/vim-go
 git clone "https://github.com/leafgarland/typescript-vim.git" $USER_DIR/.vim/pack/plugins/start/typescript-vim
+git clone "https://github.com/vim-scripts/DrawIt.git" $USER_DIR/.vim/pack/plugins/start/DrawIt
 
 cp tmux/tmux.conf $USER_DIR/.tmux.conf
 
