@@ -4,7 +4,7 @@
 
 set -ex
 
-apt-get update && apt-get install -y \
+dnf update && dnf -y install \
   curl \
   tar \
   less \
