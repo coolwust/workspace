@@ -4,7 +4,7 @@
 
 set -ex
 
-dnf update && dnf -y install \
+dnf -y update && dnf -y install \
   curl \
   tar \
   less \
