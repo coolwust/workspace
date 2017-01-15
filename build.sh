@@ -4,12 +4,11 @@
 
 set -ex
 
-dnf -y update && dnf -y install \
+apt-get update && apt-get install -y \
   curl \
   tar \
   less \
   man \
-  procps-ng \
   vim \
   tmux \
   ranger \
