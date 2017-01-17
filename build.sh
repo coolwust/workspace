@@ -17,7 +17,8 @@ dnf -y update && dnf -y install \
   docker \
   passwd \
   python \
-  ascii
+  ascii \
+  bc
 
 curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf -
 mv .dropbox-dist /opt/dropbox
