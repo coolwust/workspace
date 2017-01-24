@@ -53,6 +53,6 @@ cp ranger/rc.conf $USER_DIR/.config/ranger/rc.conf
 mkdir -p $USER_DIR/.config/systemd/user
 cp dropbox/dropbox.service $USER_DIR/.config/systemd/user
 
-mkdir -p $USER_DIR/Documents/go/src $USER_DIR/Documents/c
+mkdir -p $USER_DIR/go/src $USER_DIR/c
 
 chown -R "$1":"$1" $USER_DIR
