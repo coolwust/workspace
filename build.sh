@@ -18,7 +18,8 @@ dnf -y update && dnf -y install \
   passwd \
   python \
   ascii \
-  bc
+  bc \
+  fuse acd_cli
 
 curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf -
 mv .dropbox-dist /opt/dropbox
