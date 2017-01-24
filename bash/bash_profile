@@ -9,9 +9,9 @@ fi
 
 PATH=$PATH:$HOME/bin
 PATH=$PATH:/opt/go/bin
-PATH=$PATH:$HOME/Documents/go/bin
+PATH=$PATH:$HOME/go/bin
 PATH=$PATH:/opt/node/bin
 PATH=$PATH:/opt/google-cloud-sdk/bin
 export PATH
 
-export GOPATH=$HOME/Documents/go
+export GOPATH=$HOME/go
