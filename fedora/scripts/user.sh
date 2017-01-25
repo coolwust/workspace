@@ -2,8 +2,9 @@
 
 set -ex
 
-# systemd
-mkdir -p ~/.config/systemd/user
+# git 
+mkdir -p ~/.config/git
+cp assets/git/gitignore ~/.config/git/ignore
 
 # vim
 mkdir -p ~/.cache/vim/backup ~/.cache/vim/swap ~/.cache/vim/undo
