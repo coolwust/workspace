@@ -57,6 +57,6 @@ mkdir -p $USER_DIR/go/src
 mkdir $USER_DIR/c
 
 mkdir $USER_DIR/acd
-cp acd_cli/acd_cli.service $USER_DIR/.config/systemd/user
+cp acd_cli/amazon-cloud-drive.service $USER_DIR/.config/systemd/user
 
 chown -R "$1":"$1" $USER_DIR
