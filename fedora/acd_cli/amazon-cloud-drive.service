@@ -6,7 +6,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/acd_cli mount --foreground %h/acd
+ExecStart=/usr/bin/acd_cli mount --foreground --interval 10 --umask 002 %h/acd
 ExecStop=/usr/bin/acd_cli -v -nl umount %h/acd
 Restart=on-abort
 
