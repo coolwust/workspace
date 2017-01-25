@@ -4,6 +4,8 @@ set -ex
 
 dnf -y update && dnf -y install \
   curl \
+  xz \
+  gzip \
   tar \
   less \
   man \
@@ -12,7 +14,6 @@ dnf -y update && dnf -y install \
   ranger \
   git \
   gcc \
-  docker \
   passwd \
   ascii \
   bc \
@@ -44,10 +45,24 @@ if ! command -v gcloud; then
   printf 'export PATH=$PATH:/opt/google-cloud-sdk/bin' >/etc/profile.d/gcloud.sh
 fi
 
+# docker
+DOCKER_VERSION=1.13.0
+if ! command -v docker; then
+  dnf -y install \
+    git \
+    iptables \
+    xz
+  curl -fsSL "https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz" | tar -C /opt -zxvf -
+  cp assets/docker/docker.service /etc/systemd/system
+  cp assets/docker/docker.socket /etc/systemd/system
+  printf 'export PATH=$PATH:/opt/docker' >/etc/profile.d/docker.sh
+fi
+
 # acd_cli
 if ! command -v acd_cli; then
   dnf -y install \
     python \
     fuse \
     acd_cli
+  cp assets/acd_cli/amazon-cloud-drive.service /etc/systemd/user
 fi

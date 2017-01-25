@@ -31,4 +31,3 @@ mkdir ~/c
 
 # acd_cli
 mkdir ~/acd
-cp assets/acd_cli/amazon-cloud-drive.service ~/.config/systemd/user
