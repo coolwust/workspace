@@ -21,9 +21,6 @@ dnf -y update && dnf -y install \
   bc \
   fuse acd_cli
 
-curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -xzf -
-mv .dropbox-dist /opt/dropbox
-
 NODE_VERSION=v7.3.0
 PATH=$PATH:/opt/node/bin
 curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -Jxf -
@@ -39,6 +36,7 @@ curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
 USER_DIR=/home/"$1"
 useradd -m "$1"
 
+mkdir -p $USER_DIR/.cache/vim/backup $USER_DIR/.cache/vim/swap $USER_DIR/.cache/vim/undo
 cp vim/vimrc $USER_DIR/.vimrc
 git clone "https://github.com/fatih/vim-go.git" $USER_DIR/.vim/pack/plugins/start/vim-go
 git clone "https://github.com/leafgarland/typescript-vim.git" $USER_DIR/.vim/pack/plugins/start/typescript-vim
@@ -55,5 +53,7 @@ mkdir -p $USER_DIR/.config/systemd/user
 cp dropbox/dropbox.service $USER_DIR/.config/systemd/user
 
 mkdir -p $USER_DIR/go/src $USER_DIR/c
+
+mkdir $USER_DIR/acd
 
 chown -R "$1":"$1" $USER_DIR
