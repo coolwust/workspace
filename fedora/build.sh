@@ -36,6 +36,8 @@ curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
 USER_DIR=/home/"$1"
 useradd -m "$1"
 
+mkdir -p $USER_DIR/.config/systemd/user
+
 mkdir -p $USER_DIR/.cache/vim/backup $USER_DIR/.cache/vim/swap $USER_DIR/.cache/vim/undo
 cp vim/vimrc $USER_DIR/.vimrc
 git clone "https://github.com/fatih/vim-go.git" $USER_DIR/.vim/pack/plugins/start/vim-go
@@ -49,11 +51,11 @@ cp bash/bash_profile $USER_DIR/.bash_profile
 mkdir -p $USER_DIR/.config/ranger
 cp ranger/rc.conf $USER_DIR/.config/ranger/rc.conf
 
-mkdir -p $USER_DIR/.config/systemd/user
-cp dropbox/dropbox.service $USER_DIR/.config/systemd/user
+mkdir -p $USER_DIR/go/src
 
-mkdir -p $USER_DIR/go/src $USER_DIR/c
+mkdir $USER_DIR/c
 
 mkdir $USER_DIR/acd
+cp acd_cli/acd_cli.service $USER_DIR/.config/systemd/user
 
 chown -R "$1":"$1" $USER_DIR

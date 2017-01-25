@@ -1,0 +1,14 @@
+[Unit]
+Description=A command line interface and FUSE filesystem for Amazon Cloud Drive
+Documentation=http://acd-cli.readthedocs.io/
+AssertPathIsDirectory=%h/acd
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/acd_cli mount --foreground --allow-other --interval 10 %h/acd
+ExecStop=/usr/bin/acd_cli -v -l umount %h/acd
+Restart=on-abort
+
+[Install]
+WantedBy=default.target
