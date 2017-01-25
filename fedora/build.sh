@@ -18,8 +18,8 @@ dnf -y update && dnf -y install \
   passwd \
   ascii \
   bc \
-  python \ # required by acd_cli and gcloud
-  fuse \ # required by acd_cli
+  python \
+  fuse \
   acd_cli
 
 NODE_VERSION=v7.3.0
