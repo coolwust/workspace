@@ -52,11 +52,7 @@ autocmd ColorScheme peachpuff highlight Folded cterm=none ctermfg=none ctermbg=8
 colorscheme peachpuff
 syntax on
 
-" It automatically inserts one extra level of indentation in some cases.
-" set smartindent
+set backupdir=~/.cache/vim/backup//
+set directory=~/.cache/vim/swap//
+set undodir=~/.cache/vim/undo//
 
-" It hides buffers instead of closing them. This means that you can have unwritten
-" changes to a file and open a new file using :e without being forced to write
-" or undo your changes first. Also, undo buffers and marks are preserved while
-" the buffer is open.
-" set hidden
