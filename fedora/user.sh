@@ -32,7 +32,7 @@ mkdir -p ~/go/src ~/go/bin
 mkdir ~/c
 
 # acd_cli
-mkdir -p ~/.config/acd_cli ~/acd
+mkdir -p ~/.config/.cache/acd_cli ~/.config/acd_cli ~/acd
 cp acd_cli/amazon-cloud-drive.service ~/.config/systemd/user
 curl -o ~/.cache/acd_cli/oauth_data -fsSL $OAUTH_DATA_LINK
 systemctl --user enable amazon-cloud-drive
