@@ -48,14 +48,10 @@ fi
 # docker
 DOCKER_VERSION=1.13.0
 if ! command -v docker; then
-  dnf -y install \
-    git \
-    iptables \
-    xz
-  curl -fsSL "https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz" | tar -C /opt -zxvf -
-  cp assets/docker/docker.service /etc/systemd/system
-  cp assets/docker/docker.socket /etc/systemd/system
-  printf 'export PATH=$PATH:/opt/docker' >/etc/profile.d/docker.sh
+  dnf -y install dnf-plugins-core
+  dnf config-manager --add-repo https://docs.docker.com/engine/installation/linux/repo_files/fedora/docker.repo
+  dnf makecache fast
+  dnf -y install docker-engine
 fi
 
 # acd_cli
