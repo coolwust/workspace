@@ -18,9 +18,9 @@ dnf -y update && dnf -y install \
   bc \
 
 # node and typescript
-NODE_VERSION=v7.3.0
+NODE_VERSION=v7.4.0
 if ! command -v node; then
-  curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -c /opt -Jxf -
+  curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -C /opt -Jxf -
   mv /opt/node-${NODE_VERSION}-linux-x64 /opt/node
   PATH=$PATH:/opt/node/bin
   printf 'export PATH=$PATH:/opt/node/bin' >/etc/profile.d/node.sh
@@ -37,9 +37,9 @@ if ! command -v go; then
 fi
 
 # gcloud
-GCLOUD_VERSION=139.0.0
+GCLOUD_VERSION=141.0.0
 if ! command -v gcloud; then
-  dnf -y install ptyhon
+  dnf -y install python
   curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz" | tar -C /opt -xzf -
   printf 'export PATH=$PATH:/opt/google-cloud-sdk/bin' >/etc/profile.d/gcloud.sh
 fi
