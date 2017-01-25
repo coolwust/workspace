@@ -34,7 +34,6 @@ mkdir ~/c
 # acd_cli
 mkdir -p ~/.config/acd_cli ~/acd
 cp acd_cli/amazon-cloud-drive.service ~/.config/systemd/user
-curl -o ~/.config/acd_cli/oauth_data -fsSL $OAUTH_DATA_LINK
-acd_cli init
+curl -o ~/.cache/acd_cli/oauth_data -fsSL $OAUTH_DATA_LINK
 systemctl --user enable amazon-cloud-drive
 systemctl --user start amazon-cloud-drive
