@@ -16,10 +16,11 @@ dnf -y update && dnf -y install \
   gcc \
   docker \
   passwd \
-  python \
   ascii \
   bc \
-  fuse acd_cli
+  python \ # required by acd_cli and gcloud
+  fuse \ # required by acd_cli
+  acd_cli
 
 NODE_VERSION=v7.3.0
 PATH=$PATH:/opt/node/bin
