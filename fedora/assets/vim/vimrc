@@ -3,6 +3,9 @@ set colorcolumn=80
 set hlsearch
 set tabpagemax=30
 set wildmode=longest,list
+set backupdir=~/.cache/vim/backup//
+set directory=~/.cache/vim/swap//
+set undodir=~/.cache/vim/undo//
 
 " How many columns a <tab> character counts for in vim editor, whereas <space>
 " character is always counts for one column.
@@ -32,15 +35,13 @@ autocmd FileType pug setlocal shiftwidth=2
 autocmd FileType javascript setlocal shiftwidth=2
 autocmd FileType json setlocal shiftwidth=2
 autocmd FileType html setlocal shiftwidth=2
-autocmd FileType sh setlocal shiftwidth=2
+autocmd FileType sh setlocal tabstop=4 softtabstop=4 noexpandtab
 autocmd FileType css setlocal shiftwidth=2
 autocmd FileType scss setlocal shiftwidth=2
 autocmd FileType go setlocal tabstop=4 softtabstop=4 noexpandtab
 autocmd FileType make setlocal tabstop=4 softtabstop=4 noexpandtab
 autocmd FileType typescript setlocal shiftwidth=2
 autocmd FileType dockerfile setlocal tabstop=4 softtabstop=4 noexpandtab
-" autocmd FileType go autocmd BufWritePost * silent !go fmt %
-" autocmd BufRead *.sh set ft=
 
 " The peachpuff colorscheme overrides the highlight, so we have to override it
 " in autocmd. Also we use the color in numbers, as the color in name does not
@@ -50,9 +51,5 @@ autocmd ColorScheme peachpuff highlight ColorColumn cterm=none ctermfg=none cter
 autocmd ColorScheme peachpuff highlight Folded cterm=none ctermfg=none ctermbg=8
 
 colorscheme peachpuff
+
 syntax on
-
-set backupdir=~/.cache/vim/backup//
-set directory=~/.cache/vim/swap//
-set undodir=~/.cache/vim/undo//
-
