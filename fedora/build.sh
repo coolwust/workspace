@@ -1,5 +1,5 @@
 #!/bin/sh
 
 printf "(root) "
-su -c 'sh scripts/root.sh'
-sh scripts/user.sh
+su -c 'sh root.sh'
+sh user.sh
