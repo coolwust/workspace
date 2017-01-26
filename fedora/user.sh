@@ -4,7 +4,7 @@ set -ex
 
 # git 
 mkdir -p ~/.config/git
-cp assets/git/gitignore ~/.config/git/ignore
+cp git/gitignore ~/.config/git/ignore
 
 # vim
 mkdir -p ~/.cache/vim/backup ~/.cache/vim/swap ~/.cache/vim/undo
@@ -14,17 +14,17 @@ git clone "https://github.com/leafgarland/typescript-vim.git" ~/.vim/pack/plugin
 git clone "https://github.com/vim-scripts/DrawIt.git" ~/.vim/pack/plugins/start/DrawIt
 
 # tmux
-cp assets/tmux/tmux.conf ~/.tmux.conf
+cp tmux/tmux.conf ~/.tmux.conf
 
 # ranger
 mkdir -p ~/.config/ranger
-cp assets/ranger/rc.conf ~/.config/ranger/rc.conf
+cp ranger/rc.conf ~/.config/ranger/rc.conf
 
 # go
 mkdir -p ~/go/src ~/go/bin
 cat <<-'EOF' >>~/.bash_profile
-export GOPATH=$HOME/go
-export PATH=$PATH:$HOME/bin
+	export GOPATH=$HOME/go
+	export PATH=$PATH:$HOME/bin
 EOF
 
 # c
