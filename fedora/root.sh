@@ -16,6 +16,7 @@ dnf -y update && dnf -y install \
 	gcc \
 	ascii \
 	bc \
+	xdg-user-dirs
 
 # node and typescript
 NODE_VERSION=v7.4.0
