@@ -52,12 +52,3 @@ if ! command -v docker; then
 	dnf makecache fast
 	dnf -y install docker-engine
 fi
-
-# acd_cli
-if ! command -v acd_cli; then
-	dnf -y install \
-		python \
-		fuse \
-		acd_cli
-	cp acd_cli/amazon-cloud-drive.service /etc/systemd/user
-fi
