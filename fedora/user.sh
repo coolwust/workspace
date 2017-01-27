@@ -36,7 +36,7 @@ EOF
 mkdir -p ~/Documents/c
 
 # dropbox
-curl -L "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -C ~ -zxf -
-curl -o ~/bin/dropbox -L "https://www.dropbox.com/download?dl=packages/dropbox.py"
+curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -C ~ -zxf -
+curl -o ~/bin/dropbox -fsSL "https://www.dropbox.com/download?dl=packages/dropbox.py"
 chmod u+x ~/bin/dropbox
 cp dropbox/dropbox.service ~/.config/systemd/user
