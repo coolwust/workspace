@@ -2,7 +2,6 @@
 
 set -ex
 
-# general
 xdg-user-dirs-update
 mkdir -p ~/bin
 mkdir -p ~/.config/systemd/user
