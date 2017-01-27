@@ -4,8 +4,6 @@ set -ex
 
 # general
 mkdir -p ~/bin
-
-# systemd
 mkdir -p ~/.config/systemd/user
 
 # git 
