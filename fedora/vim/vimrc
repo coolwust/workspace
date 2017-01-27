@@ -3,9 +3,6 @@ set colorcolumn=80
 set hlsearch
 set tabpagemax=30
 set wildmode=longest,list
-set backupdir=~/.cache/vim/backup//
-set directory=~/.cache/vim/swap//
-set undodir=~/.cache/vim/undo//
 
 " How many columns a <tab> character counts for in vim editor, whereas <space>
 " character is always counts for one column.
