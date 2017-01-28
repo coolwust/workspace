@@ -5,6 +5,7 @@ set -ex
 xdg-user-dirs-update
 mkdir -p ~/bin
 mkdir -p ~/.config/systemd/user
+printf "export TERM=xterm-256color\n" >>~/.bash_profile
 
 # git 
 mkdir -p ~/.config/git
