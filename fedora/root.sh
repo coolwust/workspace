@@ -7,6 +7,7 @@ dnf -y update && dnf -y install \
 	xz \
 	gzip \
 	tar \
+	p7zip \
 	less \
 	man \
 	vim \
@@ -16,6 +17,7 @@ dnf -y update && dnf -y install \
 	gcc \
 	ascii \
 	bc \
+	mktemp \
 	xdg-user-dirs
 
 # node and typescript
@@ -43,6 +45,17 @@ if ! command -v gcloud; then
 	dnf -y install python
 	curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_VERSION}-linux-x86_64.tar.gz" | tar -C /opt -xzf -
 	printf 'export PATH=$PATH:/opt/google-cloud-sdk/bin' >/etc/profile.d/gcloud.sh
+fi
+
+# go appengine
+GO_APPENGINE_VERSION=1.9.48
+if ! command -v goapp; then
+	dnf -y install python
+	file=$(mktemp)
+	curl -o $file -fsSL "https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${GO_APPENGINE_VERSION}.zip"
+	7za x -o/opt -tzip $file
+	rm $file
+	printf 'export PATH=$PATH:/opt/go_appengine' >/etc/profile.d/go_appengine.sh
 fi
 
 # docker
