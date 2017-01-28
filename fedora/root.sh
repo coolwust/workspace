@@ -51,10 +51,10 @@ fi
 GO_APPENGINE_VERSION=1.9.48
 if ! command -v goapp; then
 	dnf -y install python
-	file=$(mktemp)
-	curl -o $file -fsSL "https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${GO_APPENGINE_VERSION}.zip"
-	7za x -o/opt -tzip $file
-	rm $file
+	tmp=$(mktemp)
+	curl -o $tmp -fsSL "https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${GO_APPENGINE_VERSION}.zip"
+	7za x -o/opt -tzip $tmp
+	rm $tmp
 	printf 'export PATH=$PATH:/opt/go_appengine' >/etc/profile.d/go_appengine.sh
 fi
 
