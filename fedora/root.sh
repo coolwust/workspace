@@ -36,7 +36,10 @@ fi
 GO_VERSION=1.7.4
 if ! command -v go; then
 	curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz" | tar -C /opt -xzf -
-	printf 'export PATH=$PATH:/opt/go/bin' >/etc/profile.d/go.sh
+	cat <<-'EOF' >/etc/profile.d/go.sh
+	export GOROOT=/opt/go
+	export PATH=$PATH:/opt/go/bin
+EOF
 fi
 
 # gcloud
