@@ -6,6 +6,7 @@ xdg-user-dirs-update
 mkdir -p ~/bin
 mkdir -p ~/.config/systemd/user
 printf "export TERM=xterm-256color\n" >>~/.bash_profile
+export TERM=xterm-256color
 
 # Git
 mkdir -p ~/.config/git
@@ -30,6 +31,8 @@ cat <<-'EOF' >>~/.bash_profile
 	export GOPATH=$HOME/Documents/go
 	export PATH=$PATH:$GOBIN
 EOF
+export GOPATH=$HOME/Documents/go
+export PATH=$PATH:$GOBIN
 
 # C
 mkdir -p ~/Documents/c
@@ -46,7 +49,7 @@ cp dropbox/dropbox.service ~/.config/systemd/user
 # protocol buffers; and the proto package is a library that implements run-time
 # support for encoding (marshaling), decoding (unmarshaling), and accessing
 # protocol buffers.
-go get -u github.com/golang/protobuf/{protoc-gen-go, proto}
+go get -u github.com/golang/protobuf/{protoc-gen-go,proto}
 
 # gRPC
 go get google.golang.org/grpc

@@ -25,8 +25,8 @@ NODE_VERSION=v7.4.0
 if ! command -v node; then
 	curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -C /opt -Jxf -
 	mv /opt/node-${NODE_VERSION}-linux-x64 /opt/node
-	PATH=$PATH:/opt/node/bin
 	printf 'export PATH=$PATH:/opt/node/bin' >/etc/profile.d/node.sh
+	export PATH=$PATH:/opt/node/bin
 fi
 if ! command -v tsc; then
 	npm install -g typescript
@@ -40,6 +40,8 @@ if ! command -v go; then
 		export GOROOT=/opt/go
 		export PATH=$PATH:/opt/go/bin
 EOF
+	export GOROOT=/opt/go
+	export PATH=$PATH:/opt/go/bin
 fi
 
 # Google Cloud SDK
@@ -48,6 +50,7 @@ if ! command -v gcloud; then
 	dnf -y install python
 	curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" | tar -C /opt -xzf -
 	printf 'export PATH=$PATH:/opt/google-cloud-sdk/bin' >/etc/profile.d/google-cloud-sdk.sh
+	export PATH=$PATH:/opt/google-cloud-sdk/bin
 fi
 
 # Google Go App Engine SDK
@@ -61,6 +64,7 @@ if ! command -v goapp; then
 	7za x -o/opt -tzip $tmp
 	rm $tmp
 	printf 'export PATH=$PATH:/opt/go_appengine' >/etc/profile.d/go_appengine.sh
+	export PATH=$PATH:/opt/go_appengine
 fi
 
 # Docker
@@ -82,4 +86,5 @@ if ! command -v protoc; then
 	7za x -o/opt/protobuf -tzip $tmp
 	rm $tmp
 	printf 'export PATH=$PATH:/opt/protobuf/bin' >/etc/profile.d/protobuf.sh
+	export PATH=$PATH:/opt/protobuf/bin
 fi
