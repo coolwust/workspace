@@ -30,10 +30,10 @@ cp ranger/rc.conf ~/.config/ranger/rc.conf
 mkdir -p ~/Documents/go/src ~/Documents/go/bin
 cat <<-'EOF' >>~/.bash_profile
 	export GOPATH=$HOME/Documents/go
-	export PATH=$PATH:$GOBIN
+	export PATH=$PATH:$GOPATH/bin
 EOF
 export GOPATH=$HOME/Documents/go
-export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOPATH/bin
 
 # C
 mkdir -p ~/Documents/c
