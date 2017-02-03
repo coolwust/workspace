@@ -4,7 +4,6 @@ set -ex
 
 SCRIPT_DIR="$(cd "$( dirname "$0" )" && pwd)"
 
-. ~/.bash_profile
 xdg-user-dirs-update
 mkdir -p ~/bin
 mkdir -p ~/.config/systemd/user
