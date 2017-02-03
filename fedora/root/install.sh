@@ -60,6 +60,9 @@ curl -o /opt/protocol_buffers.zip -fsSL "https://github.com/google/protobuf/rele
 mkdir /opt/protocol_buffers
 7za x -o/opt/protocol_buffers -tzip /opt/protocol_buffers.zip
 rm /opt/protocol_buffers.zip
+find /opt/protocol_buffers -type f -exec chmod 664 {} \+
+find /opt/protocol_buffers -type d -exec chmod 775 {} \+
+chmod a+x /opt/protocol_buffers/bin/*
 cp $SCRIPT_DIR/protocol_buffers/profile.sh /etc/profile.d/protocol_buffers.sh
 . $SCRIPT_DIR/protocol_buffers/profile.sh
 
