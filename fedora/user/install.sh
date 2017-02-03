@@ -7,7 +7,6 @@ SCRIPT_DIR="$(cd "$( dirname "$0" )" && pwd)"
 xdg-user-dirs-update
 mkdir -p ~/bin
 mkdir -p ~/.config/systemd/user
-echo 'SEND_256_COLORS_TO_REMOTE=1' >>~/.bashrc
 
 # Git
 mkdir -p ~/.config/git
