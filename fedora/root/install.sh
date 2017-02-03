@@ -15,6 +15,7 @@ dnf -y update && dnf -y install \
 	ranger \
 	git \
 	gcc \
+	python \
 	ascii \
 	bc \
 	mktemp \
@@ -40,14 +41,12 @@ EOF
 
 # Google Cloud SDK
 GOOGLE_CLOUD_SDK_VERSION=141.0.0
-dnf -y install python
 curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" | tar -C /opt -xzf -
 mv /opt/google-cloud-sdk /opt/google_cloud_sdk
 echo 'export PATH=$PATH:/opt/google_cloud_sdk/bin' >/etc/profile.d/google_cloud_sdk.sh
 
 # Go App Engine SDK
 GO_APP_ENGINE_SDK_VERSION=1.9.48
-dnf -y install python
 curl -o /opt/go_app_engine_sdk.zip -fsSL "https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${GO_APP_ENGINE_SDK_VERSION}.zip"
 7za x -o/opt -tzip /opt/go_app_engine_sdk.zip
 rm /opt/go_app_engine_sdk.zip
