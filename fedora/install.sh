@@ -2,4 +2,4 @@
 
 printf "(root) "
 su -c 'sh root/install.sh'
-sh user/install.sh
+sh -l user/install.sh
