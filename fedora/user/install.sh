@@ -8,10 +8,7 @@ SCRIPT_DIR="$(cd "$( dirname "$0" )" && pwd)"
 xdg-user-dirs-update
 mkdir -p ~/bin
 mkdir -p ~/.config/systemd/user
-
-# Terminal
-cat $SCRIPT_DIR/terminal/profile.sh >>~/.bash_profile
-. $SCRIPT_DIR/terminal/profile.sh
+echo 'SEND_256_COLORS_TO_REMOTE=1' >>~/.bashrc
 
 # Git
 mkdir -p ~/.config/git
@@ -32,8 +29,11 @@ cp $SCRIPT_DIR/ranger/rc.conf ~/.config/ranger/rc.conf
 
 # Go
 mkdir -p ~/Documents/go
-cat $SCRIPT_DIR/go/profile.sh >>~/.bash_profile
-. $SCRIPT_DIR/go/profile.sh
+cat <<-'EOF' >>~/.bash_profile
+	export GOPATH=$HOME/Documents/go
+	export PATH=$PATH:$GOPATH/bin
+EOF
+export GOPATH=$HOME/Documents/go
 
 # C
 mkdir -p ~/Documents/c
