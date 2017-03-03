@@ -43,7 +43,7 @@ chmod u+x ~/bin/dropbox
 cp $SCRIPT_DIR/dropbox/dropbox.service ~/.config/systemd/user
 
 # Go support for Protocol Buffers
-# This software has two parts: the protoc-gen-go is a 'protocol compiler plugin'
+# This software has two parts: the protoc-gen-go is a compiler plugin
 # that generates Go source files that, once compiled, can access and manage
 # protocol buffers; and the proto package is a library that implements run-time
 # support for encoding (marshaling), decoding (unmarshaling), and accessing
