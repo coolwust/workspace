@@ -21,6 +21,10 @@ dnf -y update && dnf -y install \
 	mktemp \
 	xdg-user-dirs
 
+# Git LFS
+curl -fsSL "https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh" | bash
+dnf -y install git-lfs
+
 # NodeJS
 NODE_VERSION=v7.4.0
 curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -C /opt -Jxf -

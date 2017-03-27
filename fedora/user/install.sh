@@ -12,6 +12,10 @@ mkdir -p ~/.config/systemd/user
 mkdir -p ~/.config/git
 cp $SCRIPT_DIR/git/gitignore ~/.config/git/ignore
 
+# Git LFS
+# Set up the clean and smudge filters under the name "lfs" in the ~/.gitconfig
+git lfs install
+
 # Vim
 cp $SCRIPT_DIR/vim/vimrc ~/.vimrc
 git clone "https://github.com/fatih/vim-go.git" ~/.vim/pack/plugins/start/vim-go
