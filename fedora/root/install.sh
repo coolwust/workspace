@@ -72,3 +72,8 @@ echo 'export PATH=$PATH:/opt/protocol_buffers/bin' >/etc/profile.d/protocol_buff
 dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 dnf makecache fast
 dnf -y install docker-ce
+
+# Docker Compose
+DOCKER_COMPOSE_VERSION=1.13.0
+mkdir -p /opt/docker_compose/bin
+curl -fsSL -o /opt/docker_compose/bin/docker-compose https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-Linux-x86_64
