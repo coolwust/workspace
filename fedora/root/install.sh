@@ -77,3 +77,5 @@ dnf -y install docker-ce
 DOCKER_COMPOSE_VERSION=1.13.0
 mkdir -p /opt/docker_compose/bin
 curl -fsSL -o /opt/docker_compose/bin/docker-compose https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-Linux-x86_64
+chmod a+x /opt/docker_compose/bin/docker-compose
+echo 'export PATH=$PATH:/opt/docker_compose/bin' >/etc/profile.d/docker_compose.sh
