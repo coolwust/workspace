@@ -69,8 +69,6 @@ chmod a+x /opt/protocol_buffers/bin/*
 echo 'export PATH=$PATH:/opt/protocol_buffers/bin' >/etc/profile.d/protocol_buffers.sh
 
 # Docker
-DOCKER_VERSION=1.13.0
-dnf -y install dnf-plugins-core
-dnf config-manager --add-repo https://docs.docker.com/engine/installation/linux/repo_files/fedora/docker.repo
+dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 dnf makecache fast
-dnf -y install docker-engine
+dnf -y install docker-ce
