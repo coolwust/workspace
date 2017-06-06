@@ -49,15 +49,15 @@ EOF
 
 # Google Cloud SDK
 GOOGLE_CLOUD_SDK_VERSION=157.0.0
-curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" | tar -C $TEMP -xzf -
-mv $TEMP/google-cloud-sdk /opt/google_cloud_sdk
+curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" | tar -C $TEMPDIR -xzf -
+mv $TEMPDIR/google-cloud-sdk /opt/google_cloud_sdk
 echo 'export PATH=$PATH:/opt/google_cloud_sdk/bin' >/etc/profile.d/google_cloud_sdk.sh
 
 # Protocol Buffers
 PROTOCOL_BUFFERS_VERSION=3.3.0
 curl -o $TEMPDIR/protocol_buffers.zip -fsSL "https://github.com/google/protobuf/releases/download/v${PROTOCOL_BUFFERS_VERSION}/protoc-${PROTOCOL_BUFFERS_VERSION}-linux-x86_64.zip"
 mkdir /opt/protocol_buffers
-7za x -o/opt/protocol_buffers -tzip /opt/protocol_buffers.zip
+7za x -o/opt/protocol_buffers -tzip $TEMPDIR/protocol_buffers.zip
 find /opt/protocol_buffers -type f -exec chmod 664 {} \+
 find /opt/protocol_buffers -type d -exec chmod 775 {} \+
 chmod a+x /opt/protocol_buffers/bin/*
