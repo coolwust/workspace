@@ -4,7 +4,6 @@ set -ex
 
 SCRIPT_DIR="$(cd "$( dirname "$0" )" && pwd)"
 
-xdg-user-dirs-update
 mkdir -p ~/bin
 mkdir -p ~/.config/systemd/user
 
@@ -30,15 +29,15 @@ mkdir -p ~/.config/ranger
 cp $SCRIPT_DIR/ranger/rc.conf ~/.config/ranger/rc.conf
 
 # Go
-mkdir -p ~/Documents/go
+mkdir ~/go
 cat <<-'EOF' >>~/.bash_profile
-	export GOPATH=$HOME/Documents/go
+	export GOPATH=$HOME/go
 	export PATH=$PATH:$GOPATH/bin
 EOF
-export GOPATH=$HOME/Documents/go
+export GOPATH=$HOME/go
 
 # C
-mkdir -p ~/Documents/c
+mkdir ~/c
 
 # Dropbox
 curl -fsSL "https://www.dropbox.com/download?plat=lnx.x86_64" | tar -C ~ -zxf -

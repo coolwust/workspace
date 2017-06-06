@@ -1,68 +1,63 @@
-#!/bin/sh
-
+#!/bin/sh 
 set -ex
 
 dnf -y update && dnf -y install \
-	curl \
-	xz \
-	gzip \
-	tar \
-	p7zip \
-	less \
-	man \
-	vim \
-	tmux \
-	ranger \
-	git \
-	gcc \
-	python \
 	ascii \
 	bc \
+	curl \
+	gcc \
+	git \
+	gzip \
+	less \
+	man \
 	mktemp \
-	xdg-user-dirs
+	p7zip \
+	python \
+	ranger \
+	tar \
+	tmux \
+	vim \
+	xz \
+
+TEMPDIR=$(mktemp -d)
 
 # Git LFS
-curl -fsSL "https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh" | bash
-dnf -y install git-lfs
+GIT_LFS_VERSION=2.1.1
+curl -fsSL "https://github.com/git-lfs/git-lfs/releases/download/v${GIT_LFS_VERSION}/git-lfs-linux-amd64-${GIT_LFS_VERSION}.tar.gz" | tar -C $TEMPDIR -zxf -
+mkdir -p /opt/git_lfs
+mv $TEMPDIR/git-lfs-${GIT_LFS_VERSION}/git-lfs /opt/git_lfs
+echo 'export PATH=$PATH:/opt/git_lfs' >/etc/profile.d/git_lfs.sh
 
-# NodeJS
-NODE_VERSION=v7.4.0
-curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -C /opt -Jxf -
-mv /opt/node-${NODE_VERSION}-linux-x64 /opt/nodejs
-echo 'export PATH=$PATH:/opt/nodejs/bin' >/etc/profile.d/nodejs.sh
-export PATH=$PATH:/opt/nodejs/bin
+# Node
+NODE_VERSION=v8.0.0
+curl -fsSL "https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz" | tar -C $TEMPDIR -Jxf -
+mv $TEMPDIR/node-${NODE_VERSION}-linux-x64 /opt/node
+echo 'export PATH=$PATH:/opt/node/bin' >/etc/profile.d/node.sh
+export PATH=$PATH:/opt/node/bin
 
 # TypeScript
 npm install -g typescript
 
 # Go
-GO_VERSION=1.7.4
-curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz" | tar -C /opt -xzf -
+GO_VERSION=1.8.3
+curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz" | tar -C $TEMPDIR -xzf -
+mv $TEMPDIR/go /opt/go
 cat <<-'EOF' >/etc/profile.d/go.sh
 	export GOROOT=/opt/go
 	export PATH=$PATH:/opt/go/bin
 EOF
 
 # Google Cloud SDK
-GOOGLE_CLOUD_SDK_VERSION=141.0.0
-curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" | tar -C /opt -xzf -
-mv /opt/google-cloud-sdk /opt/google_cloud_sdk
+GOOGLE_CLOUD_SDK_VERSION=157.0.0
+curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GOOGLE_CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" | tar -C $TEMP -xzf -
+mv $TEMP/google-cloud-sdk /opt/google_cloud_sdk
 echo 'export PATH=$PATH:/opt/google_cloud_sdk/bin' >/etc/profile.d/google_cloud_sdk.sh
 
-# Go App Engine SDK
-GO_APP_ENGINE_SDK_VERSION=1.9.48
-curl -o /opt/go_app_engine_sdk.zip -fsSL "https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-${GO_APP_ENGINE_SDK_VERSION}.zip"
-7za x -o/opt -tzip /opt/go_app_engine_sdk.zip
-rm /opt/go_app_engine_sdk.zip
-mv /opt/go_appengine /opt/go_app_engine_sdk
-echo 'export PATH=$PATH:/opt/go_app_engine_sdk' >/etc/profile.d/go_app_engine_sdk.sh
-
 # Protocol Buffers
-PROTOCOL_BUFFERS_VERSION=3.0.0
-curl -o /opt/protocol_buffers.zip -fsSL "https://github.com/google/protobuf/releases/download/v${PROTOCOL_BUFFERS_VERSION}/protoc-${PROTOCOL_BUFFERS_VERSION}-linux-x86_64.zip"
+PROTOCOL_BUFFERS_VERSION=3.3.0
+curl -o $TEMPDIR/protocol_buffers.zip -fsSL "https://github.com/google/protobuf/releases/download/v${PROTOCOL_BUFFERS_VERSION}/protoc-${PROTOCOL_BUFFERS_VERSION}-linux-x86_64.zip"
 mkdir /opt/protocol_buffers
 7za x -o/opt/protocol_buffers -tzip /opt/protocol_buffers.zip
-rm /opt/protocol_buffers.zip
 find /opt/protocol_buffers -type f -exec chmod 664 {} \+
 find /opt/protocol_buffers -type d -exec chmod 775 {} \+
 chmod a+x /opt/protocol_buffers/bin/*
@@ -75,7 +70,9 @@ dnf -y install docker-ce
 
 # Docker Compose
 DOCKER_COMPOSE_VERSION=1.13.0
-mkdir -p /opt/docker_compose/bin
-curl -fsSL -o /opt/docker_compose/bin/docker-compose https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-Linux-x86_64
-chmod a+x /opt/docker_compose/bin/docker-compose
-echo 'export PATH=$PATH:/opt/docker_compose/bin' >/etc/profile.d/docker_compose.sh
+mkdir -p /opt/docker_compose
+curl -fsSL -o /opt/docker_compose/docker-compose https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-Linux-x86_64
+chmod a+x /opt/docker_compose/docker-compose
+echo 'export PATH=$PATH:/opt/docker_compose' >/etc/profile.d/docker_compose.sh
+
+rm -Rf $TEMPDIR
