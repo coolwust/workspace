@@ -19,6 +19,7 @@ git lfs install
 cp $SCRIPT_DIR/vim/vimrc ~/.vimrc
 git clone "https://github.com/fatih/vim-go.git" ~/.vim/pack/plugins/start/vim-go
 git clone "https://github.com/leafgarland/typescript-vim.git" ~/.vim/pack/plugins/start/typescript-vim
+git clone https://github.com/plasticboy/vim-markdown.git ~/.vim/pack/plugins/start/vim-markdown
 git clone "https://github.com/vim-scripts/DrawIt.git" ~/.vim/pack/plugins/start/DrawIt
 
 # Tmux
