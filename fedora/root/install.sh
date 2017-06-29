@@ -18,6 +18,7 @@ dnf -y update && dnf -y install \
 	tmux \
 	vim \
 	xz \
+	ruby
 
 TEMPDIR=$(mktemp -d)
 
@@ -40,6 +41,9 @@ npm install typescript -g
 
 # Pug
 npm install pug-cli -g
+
+# Sass
+gem install sass
 
 # Go
 GO_VERSION=1.8.3
