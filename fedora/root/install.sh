@@ -36,7 +36,10 @@ echo 'export PATH=$PATH:/opt/node/bin' >/etc/profile.d/node.sh
 export PATH=$PATH:/opt/node/bin
 
 # TypeScript
-npm install -g typescript
+npm install typescript -g
+
+# Pug
+npm install pug-cli -g
 
 # Go
 GO_VERSION=1.8.3
