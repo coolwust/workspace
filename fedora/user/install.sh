@@ -22,6 +22,7 @@ git clone "https://github.com/leafgarland/typescript-vim.git" ~/.vim/pack/plugin
 git clone https://github.com/plasticboy/vim-markdown.git ~/.vim/pack/plugins/start/vim-markdown
 git clone "https://github.com/vim-scripts/DrawIt.git" ~/.vim/pack/plugins/start/DrawIt
 git clone https://github.com/digitaltoad/vim-pug.git ~/.vim/pack/plugins/start/vim-pug
+git clone https://github.com/cakebaker/scss-syntax.vim.git ~/.vim/pack/plugins/start/scss-syntax.vim
 
 # Tmux
 cp $SCRIPT_DIR/tmux/tmux.conf ~/.tmux.conf
