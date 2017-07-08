@@ -22,6 +22,28 @@ dnf -y update && dnf -y install \
 
 TEMPDIR=$(mktemp -d)
 
+# MariaDB
+
+dnf install mariadb mariadb-server
+systemctl enable mariadb
+# start server and log in as root `mysql -u root -p`, set password
+# SET PASSWORD FOR 'root'@'localhost' = PASSWORD('new_password');
+
+# The following has libncurses.so.5 issue
+# MARIADB_VERSION=10.2.6
+# dnf -y install libaio
+# curl -fsSL https://downloads.mariadb.org/f/mariadb-${MARIADB_VERSION}/bintar-linux-glibc_214-x86_64/mariadb-${MARIADB_VERSION}-linux-glibc_214-x86_64.tar.gz | tar -C $TEMPDIR -zxf -
+# mv $TEMPDIR/mariadb-${MARIADB_VERSION}-linux-glibc_214-x86_64 /opt/mysql
+# cd /opt/mysql
+# groupadd mysql 
+# useradd -g mysql mysql
+# chown -R mysql:mysql .
+# scripts/mysql_install_db --user=mysql --basedir=/opt/mysql --datadir=/opt/mysql/data
+# chown -R root .
+# chown -R mysql data
+# echo 'export PATH=$PATH:/opt/mysql/bin' >/etc/profile.d/mysql.sh
+# mysqld_safe --datadir='/opt/mysql/data'
+
 # Git LFS
 GIT_LFS_VERSION=2.1.1
 curl -fsSL "https://github.com/git-lfs/git-lfs/releases/download/v${GIT_LFS_VERSION}/git-lfs-linux-amd64-${GIT_LFS_VERSION}.tar.gz" | tar -C $TEMPDIR -zxf -
