@@ -54,3 +54,8 @@ syntax on
 
 " vim-go
 let g:go_template_autocreate = 0
+
+" gVim (to install extension/colorscheme, see 'help rtp')
+set guifont=Consolas:h11
+set guicursor=a:block-Cursor
+set guicursor=a:blinkon
