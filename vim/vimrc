@@ -51,3 +51,6 @@ autocmd ColorScheme peachpuff highlight Folded cterm=none ctermfg=none ctermbg=8
 colorscheme peachpuff
 
 syntax on
+
+" vim-go
+let g:go_template_autocreate = 0
